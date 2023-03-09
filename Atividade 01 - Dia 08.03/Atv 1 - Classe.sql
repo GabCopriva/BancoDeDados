@@ -1,14 +1,16 @@
+-- Criar BD
 CREATE DATABASE db_generation_game_online;
 
+-- Usar o BD
 USE db_generation_game_online;
 
--- Tabela
+-- Criar Tabela
 CREATE TABLE tb_classes (
-	id_classes int not null auto_increment,
-    nome_classes varchar (100) not null,
-    descricao_classes varchar (200) not null,
-    idade_classes varchar (200) not null,
-    primary key (id_classes)
+	id_classes BIGINT auto_increment,
+    nome_classes VARCHAR (100) NOT NULL,
+    descricao_classes VARCHAR (200),
+    idade_classes VARCHAR (200) NOT NULL,
+    PRIMARY KEY (id)
 );
 
 -- Insert
@@ -19,4 +21,32 @@ INSERT INTO tb_classes (nome_classes, descricao_classes, idade_classes) values
 ('Ninja', 'Jovem ninja', 'Vinte'),
 ('Mago', 'Jovem mago', 'Vinte');
 
+-- Selecionar
 SELECT * FROM tb_classes;
+
+
+-- Criar tabela personagens
+CREATE TABLE tb_personagens (
+id_personagens bigint auto_increment,
+nome_personagens varchar (255) not null,
+tipo varchar (255) not null,
+poderataque int,
+poderdefesa int,
+classe_id bigint,
+primary key (id)
+);
+
+SELECT * FROM tb_personagens;
+
+ALTER TABLE tb_personagens ADD classes_id bigint;
+ALTER TABLE tb_personagens ADD CONSTRAINT fk_personagens_classes
+FOREIGN KEY (classes_id) REFERENCES tb_classes(id);
+
+SELECT * FROM tb_personagens WHERE poderataque > 2000;
+SELECT * FROM tb_personagens WHERE poderdefesa BETWEEN 1000 AND 2000;
+
+SELECT * FROM tb_personagens WHERE nome_personagens LIKE '%C%';
+SELECT * FROM tb_personagens;
+
+SELECT * FROM tb_personagens 
+INNER JOIN tb_classes ON tb_classes.id = tb_personagens.classes_id;

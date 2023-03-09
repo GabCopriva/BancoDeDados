@@ -19,5 +19,15 @@ INSERT INTO tb_personagens (nome_personagens, tipo, poderataque, poderdefesa, id
 ('Joan', 'Perto', 4000, 1200, 7),
 ('Anir', 'Perto', 4000, 1200, 8);
 
+<<<<<<< HEAD
 
 
+=======
+SELECT * FROM tb_personagens WHERE poderataque > 2000;
+SELECT * FROM tb_personagens WHERE poderdefesa BETWEEN 1000 AND 2000;
+
+SELECT * FROM tb_personagens WHERE nome_personagens LIKE '%C%';
+
+SELECT * FROM tb_personagens INNER JOIN tb_classes ON tb_personagens.id_classes;
+SELECT * FROM tb_personagens INNER JOIN tb_classes ON tb_personagens.id_classes = tb_classes.id_classe WHERE tb_classes.nome_classe = "Guerreiro"
+>>>>>>> b15fa12ccb3a9473f45d27e83a068a31205ea6c9
